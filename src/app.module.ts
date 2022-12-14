@@ -1,27 +1,12 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { MailService } from './mail/mail-service';
-import { PostmarkMailService } from './mail/postmark-mail-service';
-import { SMTPMail } from './mail/smtp-mail-service';
-import { PrismaService } from './prisma.service';
+import { HttpModule } from './infra/http/http.module';
+import { PrismaService } from './infra/database/prisma/prisma.service';
+import { DatabaseModule } from './infra/database/database.module';
 
-
-//um module é basicamente um acoplador, ele acopla controllers e services.
-//um module pode importar outros modules
 @Module({
   imports: [
-    //aqui importamos os modules.
-    
+    HttpModule, 
+    DatabaseModule
   ],
-  controllers: [AppController],
-  //providers: [AppService], para definir o service
-  providers: [
-    PrismaService,
-    {
-      provide: MailService,//interface
-      useClass: PostmarkMailService//classe
-    }
-  ]
 })
 export class AppModule {}
