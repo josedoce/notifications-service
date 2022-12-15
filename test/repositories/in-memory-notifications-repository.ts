@@ -1,7 +1,7 @@
 //banco de dados fake
 
-import { Notification } from "../../src/application/entities/notification";
-import { NotificationRepository } from "../../src/application/repositories/notification-repository";
+import { Notification } from "@application/entities/notification";
+import { NotificationRepository } from "@application/repositories/notification-repository";
 
 
 export class InMemoryNotificationRepository implements NotificationRepository {
